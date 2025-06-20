@@ -74,6 +74,7 @@ export PKG_CONFIG_PATH="/opt/graphviz/lib/pkgconfig:$PKG_CONFIG_PATH"
 # Now, try running cmake again from your build directory
 cmake ..
 ```
+Ensuring `PKG_CONFIG_PATH` is correctly set is vital, as it allows `pkg-config` to provide CMake with the correct locations for both Graphviz header files (for compilation) and library files (for linking). If the linker reports missing libraries (e.g., `library 'gvc' not found`) even after a successful CMake configuration, double-check this path.
 
 Alternatively, for some CMake setups, providing the root of the Graphviz installation via `CMAKE_PREFIX_PATH` might help components that use `find_library` or `find_path`. While our current setup relies directly on `pkg-config`, this can be a more general CMake approach for finding software:
 
